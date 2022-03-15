@@ -1,14 +1,21 @@
 {% include 'recipes/partials/head.html' %}
 
-<body>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-    {% include 'recipes/partials/header.html' %}
-    {% include 'recipes/partials/search.html' %}
+    <head>
+        {% include 'recipes/partials/head.html' %}
+        <title>{% block title %}{% endblock title %} Recipes</title>
+    </head>
 
-    <main class="main-content-container">
-        {% block content %}{% endblock %}
-    </main>
+    <body>
+        {% include 'recipes/partials/header.html' %}
+        {% include 'recipes/partials/search.html' %}
+        
+        <main class="main-content-container">
+            {% block content %}{% endblock content %}
+        </main>
+        {% include 'recipes/partials/footer.html' %}
+    </body>
 
-    {% include 'recipes/partials/footer.html' %}
-
-</body>
+</html>
