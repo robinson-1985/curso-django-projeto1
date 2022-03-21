@@ -4,15 +4,20 @@ from .models import Recipes
 
 
 def home(request):
-    recipes = Recipes.objects.all().order_by('-id')
+    recipes = Recipes.objects.filter(
+        is_published=True
+    ).order_by('-id')
     return render(request, 'recipes/pages/home.html', context={
         'recipes': recipes,
     })
 
 
 def category(request, category_id):
-    recipes = Recipes.objects.filter(category__id=category_id).order_by('-id')
-    return render(request, 'recipes/pages/home.html', context={
+    recipes = Recipes.objects.filter(
+        category__id=category_id,
+        is_published=True
+    ).order_by('-id')
+    return render(request, 'recipes/pages/category.html', context={
         'recipes': recipes,
     })
 
